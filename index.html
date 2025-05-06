@@ -2,83 +2,172 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>noisylovr - Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>f society terminal</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-
-    header {
-      background: #333;
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
-    }
-
-    nav a {
-      color: #fff;
-      margin: 0 15px;
-      text-decoration: none;
-    }
-
-    section {
+      background-color: black;
+      color: #00ff00;
+      font-family: 'Courier New', Courier, monospace;
       padding: 20px;
+      margin: 0;
+
+      background-image: url('632851-Mr._Robot-fsociety-fictional_logo-Adobe_Illustrator-Photoshop-minimalism-digital_art.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
     }
 
-    .portfolio-item {
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.85);
+      z-index: 0;
+    }
+
+    .ascii-art,
+    #terminal,
+    audio,
+    .spotify-embed,
+    .telegram-link {
+      position: relative;
+      z-index: 1;
+    }
+
+    pre.ascii-art {
+      font-size: 12px;
+      line-height: 1.2;
+      white-space: pre;
       margin-bottom: 20px;
     }
 
-    footer {
+    .line {
+      display: block;
+      white-space: pre;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background-color: #00ff00;
+      animation: blink 0.8s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { background-color: transparent; }
+      50% { background-color: #00ff00; }
+    }
+
+    .spotify-embed {
+      margin-top: 20px;
+      width: 100%;
+      height: 352px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .telegram-link {
+      margin-top: 20px;
       text-align: center;
-      padding: 10px;
-      background: #333;
-      color: #fff;
+    }
+
+    .telegram-link a {
+      color: #00ff00;
+      font-size: 18px;
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 2px solid #00ff00;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .telegram-link a:hover {
+      background-color: #00ff00;
+      color: black;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Your Name</h1>
-    <p>Web Developer | Designer | Creator</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <!-- Custom f society ASCII logo -->
+  <pre class="ascii-art">
+  _____                   .__        __          
+_/ ____\__________   ____ |__| _____/  |_ ___.__.
+\   __\/  ___/  _ \_/ ___\|  |/ __ \   __<   |  |
+ |  |  \___ (  <_> )  \___|  \  ___/|  |  \___  |
+ |__| /____  >____/ \___  >__|\___  >__|  / ____|
+           \/           \/        \/      \/     
+  </pre>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I'm a script kiddie im a new to coding want to become rom developer for starlte aka the galaxy s9 </p>
-  </section>
+  <!-- Terminal container -->
+  <div id="terminal"></div>
 
-  <section id="portfolio">
-    <h2>Portfolio</h2>
-    <div class="portfolio-item">
-      <h3>Project One</h3>
-      <p>A brief description of your project. <a href="#">View project</a></p>
-    </div>
-    <div class="portfolio-item">
-      <h3>Project Two</h3>
-      <p>A brief description of your project. <a href="#">View project</a></p>
-    </div>
-  </section>
+  <!-- Background Audio: New file -->
+  <audio autoplay loop>
+    <source src="1.08-whatsyourask.m4p.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: littlekokochoko@proton.me</p>
-    <p>GitHub: <a href="#">noisylovr</a></p>
-  </section>
+  <!-- Spotify Playlist Embed -->
+  <div class="spotify-embed">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0GjTE2gZv0hXb7ZxkjfD6v?utm_source=generator" 
+      width="100%" height="352" frameborder="0" allowfullscreen="" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 noisylovr. All rights reserved.</p>
-  </footer>
+  <!-- Telegram Link -->
+  <div class="telegram-link">
+    <a href="https://t.me/in0utb0x" target="_blank">Join me on Telegram</a>
+  </div>
+
+  <!-- Typing effect script -->
+  <script>
+    const lines = [
+      "f society",
+      "We are watching.",
+      "Expect us."
+    ];
+
+    const terminal = document.getElementById("terminal");
+    let lineIndex = 0;
+
+    function typeLine(text, index, callback) {
+      const lineElem = document.createElement("div");
+      lineElem.classList.add("line");
+      terminal.appendChild(lineElem);
+
+      let charIndex = 0;
+      const interval = setInterval(() => {
+        lineElem.textContent = "$ " + text.slice(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === text.length) {
+          clearInterval(interval);
+          if (callback) setTimeout(callback, 500);
+        }
+      }, 50);
+    }
+
+    function typeAllLines() {
+      if (lineIndex < lines.length) {
+        typeLine(lines[lineIndex], lineIndex, () => {
+          lineIndex++;
+          typeAllLines();
+        });
+      } else {
+        const cursor = document.createElement("span");
+        cursor.classList.add("cursor");
+        terminal.lastChild.appendChild(cursor);
+      }
+    }
+
+    typeAllLines();
+  </script>
 
 </body>
 </html>
